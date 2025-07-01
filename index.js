@@ -13,7 +13,7 @@ Goal
 Produce a **comma‑separated list of additional glob patterns** that can be excluded when packaging the repo for downstream LLMs—enough to shrink token count while preserving all material relevant to the current request.
 
 Constraints
-- Consider only files/directories **not already ignored** by the existing Repomix config or `.gitignore`.
+- Consider only files/directories **not already ignored** by the existing Repomix config or ".gitignore".
 - Keep anything that:
   • Implements or configures functionality referenced in <request>,  
   • Demonstrates reusable patterns or architecture,  
