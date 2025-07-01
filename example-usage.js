@@ -11,7 +11,7 @@ async function example() {
       instruction: 'ignore test files, build artifacts, node_modules, and documentation',
       // outputPath is optional - will use repomix config if not specified
       apiKey: process.env.GEMINI_API_KEY, // or pass your key directly
-      model: 'gemini-1.5-flash',
+      model: 'gemini-2.5-flash',
       verbose: true
     });
     

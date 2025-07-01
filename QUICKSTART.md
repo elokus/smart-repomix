@@ -128,7 +128,7 @@ npx /path/to/smart-repomix -I "ignore unnecessary files"
 4. **Empty or invalid ignore patterns**
    - Try being more specific in your instruction
    - Use verbose mode (`-v`) to see what's happening
-   - Try a different Gemini model with `-m gemini-1.5-pro`
+   - Try a different Gemini model with `-m gemini-2.5-pro`
 
 5. **"stdout maxBuffer exceeded" error**
    - This happens with very large repositories

@@ -90,13 +90,13 @@ npx smart-repomix -I "ignore test files and documentation, focus on configuratio
 
 ```bash
 # Fast mode (default)
-npx smart-repomix -I "..." -m gemini-1.5-flash
+npx smart-repomix -I "..." -m gemini-2.5-flash
 
 # More accurate for large codebases
-npx smart-repomix -I "..." -m gemini-1.5-pro
+npx smart-repomix -I "..." -m gemini-2.5-pro
 
 # Latest model
-npx smart-repomix -I "..." -m gemini-1.5-pro-latest
+npx smart-repomix -I "..." -m gemini-2.5-pro-latest
 ```
 
 ## Scripting and Automation
@@ -181,8 +181,8 @@ jobs:
    ```
 
 2. **Model selection**: 
-   - Use `gemini-1.5-flash` for most cases (fast and effective)
-   - Use `gemini-1.5-pro` for very large codebases or complex filtering needs
+   - Use `gemini-2.5-flash` for most cases (fast and effective)
+   - Use `gemini-2.5-pro` for very large codebases or complex filtering needs
 
 3. **Dry run first**: Always test with `--dry-run` to see what will be ignored
    ```bash
@@ -213,7 +213,7 @@ npx repomix --output test-filtered.xml --ignore "node_modules/**,*.test.js"
 ```bash
 # Test API key
 export GEMINI_API_KEY="your-key"
-curl -X POST "https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=$GEMINI_API_KEY" \
+curl -X POST "https://generativelanguage.googleapis.com/v1/models/gemini-2.5-flash:generateContent?key=$GEMINI_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"contents":[{"parts":[{"text":"Hello"}]}]}'
 ```
@@ -235,7 +235,7 @@ async function analyzeCodebase(projectPath, instruction) {
       instruction,
       outputPath: 'analysis.xml',
       apiKey: process.env.GEMINI_API_KEY,
-      model: 'gemini-1.5-pro',
+      model: 'gemini-2.5-pro',
       verbose: false,
       spinner
     });

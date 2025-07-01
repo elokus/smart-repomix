@@ -21,7 +21,7 @@ program
   .option('-I, --instruction <instruction>', 'Instruction for AI to determine which files to ignore')
   .option('-o, --output <path>', 'Output file path (defaults to repomix config or repomix-output.xml)')
   .option('-k, --api-key <key>', 'Gemini API key (or use GEMINI_API_KEY env var or smartRepomix.apiKey in repomix.config.json)')
-  .option('-m, --model <model>', 'Gemini model to use', 'gemini-1.5-flash')
+  .option('-m, --model <model>', 'Gemini model to use', 'gemini-2.5-flash')
   .option('-v, --verbose', 'Show verbose output')
   .option('--dry-run', 'Show what files would be ignored without creating final output')
   .allowUnknownOption(true) // Allow passing through options to repomix

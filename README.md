@@ -102,7 +102,7 @@ npx smart-repomix -I "ignore test files" -o my-output.xml
 ### Advanced options
 ```bash
 # Use a different Gemini model
-npx smart-repomix -I "ignore test files" -m gemini-1.5-pro
+npx smart-repomix -I "ignore test files" -m gemini-2.5-pro
 
 # Verbose output
 npx smart-repomix -I "ignore test files" -v
@@ -119,7 +119,7 @@ npx smart-repomix -I "ignore test files" -k "your-api-key"
 - `-I, --instruction <instruction>` - **Required**. Instruction for AI to determine which files to ignore
 - `-o, --output <path>` - Output file path (defaults to repomix config or `repomix-output.xml`)
 - `-k, --api-key <key>` - Gemini API key (or use `GEMINI_API_KEY` env var or config)
-- `-m, --model <model>` - Gemini model to use (default: `gemini-1.5-flash`)
+- `-m, --model <model>` - Gemini model to use (default: `gemini-2.5-flash`)
 - `-v, --verbose` - Show verbose output
 - `--dry-run` - Show what files would be ignored without creating final output
 
@@ -166,7 +166,7 @@ const ignorePatterns = await smartRepomix({
   instruction: 'ignore test files and build artifacts',
   outputPath: 'output.xml', // optional, uses repomix config if not specified
   apiKey: 'your-api-key',
-  model: 'gemini-1.5-flash',
+  model: 'gemini-2.5-flash',
   verbose: true
 });
 
@@ -177,8 +177,8 @@ console.log('Ignored patterns:', ignorePatterns);
 
 - Be specific in your instructions for better results
 - Use `--dry-run` first to preview what will be ignored
-- The `gemini-1.5-flash` model is fast and works well for most cases
-- For very large codebases, consider using `gemini-1.5-pro` for better analysis
+- The `gemini-2.5-flash` model is fast and works well for most cases
+- For very large codebases, consider using `gemini-2.5-pro` for better analysis
 - Smart Repomix respects your existing `repomix.config.json` settings
 
 ## License

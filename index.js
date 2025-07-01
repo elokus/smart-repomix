@@ -6,27 +6,39 @@ import chalk from 'chalk';
 
 // Default prompt template with placeholders
 const DEFAULT_PROMPT_TEMPLATE = `
-You are analyzing a codebase represented in XML format. Your task is to identify files and directories that should be IGNORED based on the user's instruction.
+Role
+You are a Repo‑Trimming Assistant with full visibility of the supplied codebase.
 
-User instruction: "{{instruction}}"
+Goal
+Produce a **comma‑separated list of additional glob patterns** that can be excluded when packaging the repo for downstream LLMs—enough to shrink token count while preserving all material relevant to the current request.
 
-The XML content represents the entire codebase structure. Analyze it and return ONLY a comma-separated list of glob patterns for files/directories that should be ignored.
+Constraints
+- Consider only files/directories **not already ignored** by the existing Repomix config or `.gitignore`.
+- Keep anything that:
+  • Implements or configures functionality referenced in <request>,  
+  • Demonstrates reusable patterns or architecture,  
+  • Defines shared utilities, domain models, or core APIs.
+- It is safe to drop:
+  • Large demo/sample data, build artefacts, generated docs, vendored assets, unused legacy modules.  
+  • Non‑essential scripts, test fixtures, screenshots, coverage reports, etc., *unless* directly relevant to <request>.
+- Do not drop files that are relevant for the end-to-end flow.
+- Leave all files that are necessary to understand the bigger picture.
+- Use standard glob syntax ("**/path/**", "*.ext", etc.).
+- **Output only the comma‑separated glob list—no prose, no newlines.**
 
-Examples of valid patterns:
-- node_modules/**
-- **/*.test.js
-- build/**
-- .git/**
-- **/*.log
-- cache/**
-- dist/**
+Steps
+1. Read and understand <request>.  
+2. Scan <codebase> and mark modules/files irrelevant to fulfilling the request.  
+3. Deduplicate and optimise the glob patterns to avoid overlap.  
+4. Return the final pattern list.
 
-Return ONLY the comma-separated patterns, nothing else. For example:
-node_modules/**,build/**,**/*.test.js
+<request>
+{{instruction}}
+</request>
 
-Here is the codebase XML:
-
+<codebase>
 {{codebase}}
+</codebase>
 `;
 
 export async function smartRepomix(options) {
