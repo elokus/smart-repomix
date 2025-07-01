@@ -178,7 +178,7 @@ export async function smartRepomix(options) {
 
     try {
       execSync(repomixCmd, {
-        stdio: verbose ? 'inherit' : 'pipe'
+        stdio: 'inherit'
       });
     } catch (error) {
       throw new Error(`Failed to run filtered repomix: ${error.message}`);
