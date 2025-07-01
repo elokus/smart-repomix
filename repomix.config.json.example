@@ -1,0 +1,30 @@
+{
+  // Standard repomix configuration
+  "output": {
+    "filePath": "repomix-output.xml",
+    "style": "xml",
+    "removeComments": false,
+    "removeEmptyLines": false,
+    "topFilesLength": 10,
+    "showLineNumbers": false,
+    "copyToClipboard": false
+  },
+  
+  "include": ["**/*"],
+  
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": []
+  },
+  
+  // Smart Repomix specific configuration
+  "smartRepomix": {
+    // Your Gemini API key (optional - can also use env var or CLI option)
+    "apiKey": "your-gemini-api-key-here",
+    
+    // Custom prompt template (optional)
+    // Use {{instruction}} and {{codebase}} as placeholders
+    "promptTemplate": "You are analyzing a codebase represented in XML format. Your task is to identify files and directories that should be IGNORED based on the user's instruction.\n\nUser instruction: \"{{instruction}}\"\n\nThe XML content represents the entire codebase structure. Analyze it and return ONLY a comma-separated list of glob patterns for files/directories that should be ignored.\n\nExamples of valid patterns:\n- node_modules/**\n- **/*.test.js\n- build/**\n- .git/**\n- **/*.log\n- cache/**\n- dist/**\n\nReturn ONLY the comma-separated patterns, nothing else. For example:\nnode_modules/**,build/**,**/*.test.js\n\nHere is the codebase XML:\n\n{{codebase}}"
+  }
+}
